@@ -8,7 +8,7 @@ from register_translation import register_translation
 import matplotlib.font_manager as fm
 
 # 注意设置中文字体
-myfont = fm.FontProperties(fname='/home/pj/datum/fonts/msyh.ttf')
+# myfont = fm.FontProperties(fname='/home/pj/datum/fonts/msyh.ttf')
 
 
 def crop(im, size):
@@ -34,13 +34,13 @@ im1 = crop(image, size1)
 im2 = crop(image, size2)
 
 ax1.imshow(image, cmap='gray')
-ax1.set_title('原始图片', fontproperties=myfont)
+ax1.set_title('origin')
 ax2.imshow(im1, cmap='gray')
-ax2.set_title('图片A:' + str(size1), fontproperties=myfont)
+ax2.set_title('picA:' + str(size1))
 ax3.imshow(im2, cmap='gray')
-ax3.set_title('图片B:' + str(size2), fontproperties=myfont)
+ax3.set_title('picB:' + str(size2))
 # shifts = register_translation_without_fft(im1, im2)
 shifts, cross_correlation = register_translation(im1, im2)
 ax4.imshow(cross_correlation.real, cmap='gray')
-ax4.set_title('互相关矩阵' + "最高点为：" + str(shifts), fontproperties=myfont)
+ax4.set_title('cross correlation mat' + "vertex：" + str(shifts))
 plt.show()
